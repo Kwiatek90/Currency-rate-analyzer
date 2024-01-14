@@ -1,6 +1,7 @@
 import pandas as pd
 
 def select_currency_data(df):
+    '''Tn this function we can select a few currency and print data. Next we can save the data that we selected previous'''
     try:
         user_input = input("Enter currency pairs separated by commas (USD/PLN, CHF/PLN, EUR/PLN, EUR/USD, CHF/USD):")
         selected_currencies = [currency.strip().upper() for currency in user_input.split(',')]
@@ -27,18 +28,21 @@ def select_currency_data(df):
         print(f"Unexpected error: {e}")
         
 def save_selected_currency_data(df, selected_currencies):
+    '''Function gets selected data grom original file with all data'''
     selected_columns = ['date'] + [currency for currency in selected_currencies]
     selected_df = df[selected_columns]
     print(selected_df)
     return selected_df
 
 def select_currency_data_analysis(df):
+    '''In this function we can select one currency and show its mediana, average, minimum and maximum rate'''
     user_input = input("Enter the currency pair for which you want to calculate statistics (USD/PLN, CHF/PLN, EUR/PLN, EUR/USD, CHF/USD): ")
     selected_currency_pair = user_input.strip().upper()
 
     calculate_currency_stats(df, selected_currency_pair)
     
 def calculate_currency_stats(df, currency_pair):
+    '''This function calculates the currency'''
     try:
         df = df.dropna()
         currency_column = df[currency_pair]

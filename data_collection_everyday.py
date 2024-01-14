@@ -6,6 +6,7 @@ import time
 import warnings
 
 def save_all_currency_data():
+    '''This function gets a currency rate from a day on 12:00 o'clock and update the file all_currency_data when the currency was withdrawn today the function skip'''
     file_path = "all_currency_data.csv"
      
     try:
